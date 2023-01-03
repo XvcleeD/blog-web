@@ -13,8 +13,6 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Card from 'react-bootstrap/Card';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 
 
@@ -56,40 +54,25 @@ export default function NavScrollExample() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className='row container m-auto justify-content-center'>
+      <div className='row mt-5 container m-auto justify-content-center'>
 
 
-        <div className='d-flex py-3 col-sm-11 col-md-8 col-12 justify-content-between'>
+        <Card className='d-flex py-3 col-sm-11 col-md-8 col-12 flex-row justify-content-between border-0'>
           <h1 className='col'>Ангилал</h1>
-          <Button variant='light' onClick={handleShow}>засах</Button>
-        </div>
-        <Card className='col-sm-11 my-3 col-md-8 col-12 d-flex  justify-content-between align-items-center border rounded'>
-          <Container>
-            <Row className='align-items-center'>
-
-              <Col md={3}>
-                <Card.Body>Улс төр</Card.Body>
-              </Col>
-              <Col md={{ span: 1, offset: 7 }}>{<Button variant='light'>засах</Button>}</Col>
-            </Row>
-
-          </Container>
+          <Button variant='outline-primary' onClick={handleShow}>шинэ</Button>
         </Card>
-        <div>
-          <p className='mt-3'></p>
-
-        </div>
-
-        <div className='col-sm-11 my-3 col-md-8 col-12 d-flex justify-content-between align-items-center border rounded'>
-          <p className='mt-3'>Улс төр</p>
-          <Button variant='light' >засах</Button>
-        </div>
-
-        <div className='col-sm-11 my-3 col-md-8 col-12 d-flex justify-content-between align-items-center border rounded'>
-          <p className='mt-3'>Улс төр</p>
+        <Card className='col-sm-11 my-3 col-md-8 col-12 d-flex flex-row align-items-center border rounded'>
+          <Card.Body>Улс төр</Card.Body>
           <Button variant='light'>засах</Button>
-        </div>
-
+        </Card>
+        <Card className='col-sm-11 my-3 col-md-8 col-12 d-flex flex-row align-items-center border rounded'>
+          <Card.Body>Улс төр</Card.Body>
+          <Button variant='light'>засах</Button>
+        </Card>
+        <Card className='col-sm-11 my-3 col-md-8 col-12 d-flex flex-row align-items-center border rounded'>
+          <Card.Body>Улс төр</Card.Body>
+          <Button variant='light'>засах</Button>
+        </Card>
 
       </div>
       <Modal show={show} onHide={handleClose} animation={false}>
