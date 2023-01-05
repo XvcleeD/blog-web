@@ -4,15 +4,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import React from "react";
 
-export let ModalEl = ({ show, onClose }) => {
+export let EditCard = ({ show, onClose }) => {
   return (
     <>
       <Modal show={show} onHide={onClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Шинэ мэдээ</Modal.Title>
+          <Modal.Title>Засах цонх</Modal.Title>
         </Modal.Header>
         <label>
-          <p className=" p-3">Мэдээний нэр</p>
+          <p className=" p-3">Мэдээний шинэ нэр</p>
           <InputGroup size="sm" className="mb-3 p-3 pt-0">
             <Form.Control
               aria-label="Small"
