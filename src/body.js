@@ -1,8 +1,8 @@
 import Card from "react-bootstrap/Card";
-import { CategotyList } from "./cardEl";
 import { ModalEl } from "./modal";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { CategotyList } from "./cardEl";
 
 export function Body() {
   const [editing, setEditing] = useState(false);

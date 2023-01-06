@@ -1,19 +1,20 @@
-import { categories } from "./categories";
 import Card from "react-bootstrap/Card";
 import { EditCard } from "./editCard";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { ModalEl } from "./modal";
 
-export let CategotyList = () => {
+export let CategotyList = (todos) => {
   const [editing, setEditing] = useState(false);
   function closeModal() {
     setEditing(false);
   }
+
   return (
     <>
-      {categories.map((cat1) => (
+      {todos.map((cat1) => (
         <Card className="col-sm-11 my-3 col-md-8 col-12 d-flex gap-1 flex-row align-items-center border rounded">
-          <Card.Body>{cat1.name}</Card.Body>
+          <Card.Body>{cat1}</Card.Body>
           <Button variant="light" onClick={() => setEditing(true)}>
             засах
           </Button>
@@ -21,6 +22,7 @@ export let CategotyList = () => {
           <EditCard show={editing} onClose={closeModal} />
         </Card>
       ))}
+      <ModalEl show={editing} onClose={closeModal} todos={todos} />
     </>
   );
 };
