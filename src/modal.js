@@ -14,7 +14,7 @@ export function ModalEl({ show, onClose, todos }) {
   }
 
   function addTodo() {
-    const newTodos = [...todos, text];
+    const newTodos = [text, ...todos];
     setModalEl(newTodos);
     setText("");
   }
