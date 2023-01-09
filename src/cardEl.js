@@ -26,3 +26,4 @@ export let CategotyList = (todos) => {
     </>
   );
 };
+  
