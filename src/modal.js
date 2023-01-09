@@ -3,25 +3,15 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import React from "react";
-import { useState } from "react";
 
-export function ModalEl({ show, onClose, todos }) {
-  const [text, setText] = useState("");
-  const [todos, setModalEl] = useState([]);
-
+export function NewModal({ show, handleClose, text, addTodo, setText }) {
   function handleTextChange(event) {
     setText(event.target.value);
   }
 
-  function addTodo() {
-    const newTodos = [text, ...todos];
-    setModalEl(newTodos);
-    setText("");
-  }
-
   return (
     <>
-      <Modal show={show} onHide={onClose}>
+      <Modal show={show} handleClose={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Шинэ мэдээ</Modal.Title>
         </Modal.Header>
@@ -37,7 +27,7 @@ export function ModalEl({ show, onClose, todos }) {
           </InputGroup>
         </label>
         <Modal.Footer>
-          <Button variant="secondary" onClick={onClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Гарах
           </Button>
           <Button variant="primary" onClick={addTodo}>
