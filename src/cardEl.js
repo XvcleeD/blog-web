@@ -5,9 +5,17 @@ import { useState } from "react";
 
 import { NewModal } from "./modal";
 
-export let CardList = ({ handleClose, show, setShow }) => {
+export let CardList = ({
+  handleClose,
+  show,
+  setShow,
+  handleClose1,
+  show1,
+  setShow1,
+}) => {
   const [text, setText] = useState("");
   const [todos, setModalEl] = useState([]);
+  
 
   function addTodo() {
     const newTodos = [text, ...todos];
@@ -23,12 +31,19 @@ export let CardList = ({ handleClose, show, setShow }) => {
     }
   }
 
+function editTodos() {
+  let newTodos = [text]
+  setModalEl(newTodos);
+  setText(todos);
+  setShow(false);
+}
+
   return (
     <>
       {todos.map((cat1, index) => (
         <Card className="col-sm-11 my-3 col-md-8 col-12 d-flex gap-2 flex-row align-items-center border rounded">
           <Card.Body key={index}>{cat1}</Card.Body>
-          <Button variant="light" onClick={setShow}>
+          <Button variant="light" onClick={setShow1}>
             засах
           </Button>
           <Button variant="danger" onClick={() => handleDelete(index)}>
@@ -36,7 +51,7 @@ export let CardList = ({ handleClose, show, setShow }) => {
           </Button>
         </Card>
       ))}
-      <EditCard show={show} handleClose={handleClose} />
+      <EditCard show1={show1} handleClose1={handleClose1} setText={setText} text={newTodos} editTodos={editTodos}/>
       <NewModal
         show={show}
         setShow={setShow}
