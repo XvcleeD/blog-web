@@ -32,8 +32,6 @@ export let CardList = ({
   }
 
 function editTodos() {
-  let newTodos = [text]
-  setModalEl(newTodos);
   setText(todos);
   setShow(false);
 }
@@ -51,7 +49,7 @@ function editTodos() {
           </Button>
         </Card>
       ))}
-      <EditCard show1={show1} handleClose1={handleClose1} setText={setText} text={newTodos} editTodos={editTodos}/>
+      <EditCard show1={show1} handleClose1={handleClose1} setText={setText} editTodos={editTodos}/>
       <NewModal
         show={show}
         setShow={setShow}
