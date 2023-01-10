@@ -8,9 +8,6 @@ export function Body() {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [show1, setShow1] = useState(false);
-  const handleShow1 = () => setShow1(true);
-  const handleClose1 = () => setShow1(false);
 
   return (
     <>
@@ -27,10 +24,6 @@ export function Body() {
           setShow={setShow}
           handleShow={handleShow}
           handleClose={handleClose}
-          show1={show1}
-          setShow1={setShow1}
-          handleShow1={handleShow1}
-          handleClose1={handleClose1}
         />
       </div>
     </>
