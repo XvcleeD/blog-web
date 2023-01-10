@@ -48,6 +48,8 @@ export let CardList = ({ handleClose, show, setShow }) => {
     setEditingText(newEditingTexts);
   }
 
+  console.log({ editingTexts });
+
   return (
     <>
       {todos.map((cat1, index) => (
@@ -71,7 +73,10 @@ export let CardList = ({ handleClose, show, setShow }) => {
           ) : (
             <>
               <Card.Body key={index}>{cat1.text}</Card.Body>
-              <Button variant="light" onClick={editTodoInline(cat1.id, index)}>
+              <Button
+                variant="light"
+                onClick={() => editTodoInline(cat1.id, index)}
+              >
                 засах
               </Button>
               <Button variant="danger" onClick={() => handleDelete(index)}>
