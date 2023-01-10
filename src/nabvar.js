@@ -13,7 +13,7 @@ export let NavbarEl = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse>
             <Nav
-              className="me-auto my-2 my-lg-0"
+              className="text-light navbar-nav-scroll me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
             >
               <Nav.Link href="#action1">Хэрэглэгч</Nav.Link>

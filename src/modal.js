@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import React from "react";
 
-export function NewModal({ show, handleClose, text, addTodo, setText }) {
+export function NewModal({ show, handleClose, text, addTodo, setText, error }) {
   // console.log(text);
   function handleTextChange(event) {
     setText(event.target.value);
@@ -23,6 +23,7 @@ export function NewModal({ show, handleClose, text, addTodo, setText }) {
               onChange={handleTextChange}
               aria-label="Small"
               aria-describedby="inputGroup-sizing-sm"
+              style={{borderColor: error ? "red" : "none"}}
             />
           </InputGroup>
         </label>
