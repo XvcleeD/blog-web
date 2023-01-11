@@ -3,15 +3,26 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import React from "react";
+import { useState } from "react";
 
-export function NewModal({ show, handleClose, text, addTodo, setText, error }) {
-  // console.log(text);
+export function NewModal({ show, handleClose, onSave }) {
+  const [text, setText] = useState("");
+  const [error, setError] = useState("");
   function handleTextChange(event) {
     setText(event.target.value);
   }
+  function handleSave() {
+    if (text === "") {
+      setError("utgaa bichnuu");
+    } else {
+      setError("");
+      onSave(text);
+      setText("");
+    }
+  }
   return (
     <>
-      <Modal show={show} onClose={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Шинэ мэдээ</Modal.Title>
         </Modal.Header>
@@ -23,7 +34,7 @@ export function NewModal({ show, handleClose, text, addTodo, setText, error }) {
               onChange={handleTextChange}
               aria-label="Small"
               aria-describedby="inputGroup-sizing-sm"
-              style={{borderColor: error ? "red" : "none"}}
+              style={{ borderColor: error ? "red" : "none" }}
             />
           </InputGroup>
         </label>
@@ -31,7 +42,7 @@ export function NewModal({ show, handleClose, text, addTodo, setText, error }) {
           <Button variant="secondary" onClick={handleClose}>
             Гарах
           </Button>
-          <Button variant="primary" onClick={addTodo}>
+          <Button variant="primary" onClick={handleSave}>
             Хадгалах
           </Button>
         </Modal.Footer>

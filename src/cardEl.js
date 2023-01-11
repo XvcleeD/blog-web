@@ -6,80 +6,19 @@ import { EditingItem } from "./Editing_Item";
 import { NormalItem } from "./Normal_Item";
 
 export let CardList = ({ handleClose, show, setShow }) => {
-  const [text, setText] = useState("");
   const [todos, setModalEl] = useState([]);
-  const [error, setError] = useState("");
-  const [editing, setEditing] = useState();
+
   const [editingTexts, setEditingText] = useState({});
 
-  function addTodo() {
-    if (text === "") {
-      setError("utga bicnnuu");
-    } else {
-      if (editing === undefined) {
-        const newTodo = {
-          text: text,
-          done: false,
-          id: uuidv4(),
-        };
-        const newTodos = [newTodo, ...todos];
-        setModalEl(newTodos);
-      } else {
-        const newTodos = [...todos];
-        newTodos[editing].text = text;
-        setModalEl(newTodos);
-        setEditing(undefined);
-      }
-      setText("");
-      setShow(false);
-      setError("");
-    }
-  }
-  function handleDoneChange(id) {
-    const newTodos = [...todos];
-
-    let index;
-    for (let i = 0; i < todos.length; i++) {
-      if (id === todos[i].id) {
-        index = i;
-        break;
-      }
-    }
-    newTodos[index].done = !newTodos[index].done;
+  function handleSave(text) {
+    const newTodo = {
+      text: text,
+      done: false,
+      id: uuidv4(),
+    };
+    const newTodos = [newTodo, ...todos];
     setModalEl(newTodos);
-  }
-  function handleDelete(index) {
-    if (window.confirm("Устгах уу ?")) {
-      const newTodos = [...todos];
-      newTodos.splice(index, 1);
-      setModalEl(newTodos);
-    }
-  }
-  function editTodoInline(id, index) {
-    const newEditingTexts = { ...editingTexts };
-    console.log(newEditingTexts);
-    newEditingTexts[id] = todos[index].text;
-    setEditingText(newEditingTexts);
-  }
-  function handleEditingText(id, e) {
-    const newEditingTexts = { ...editingTexts };
-    newEditingTexts[id] = e.target.value;
-    setEditingText(newEditingTexts);
-  }
-  function cancalEditing(id) {
-    const newEditingTexts = { ...editingTexts };
-    newEditingTexts[id] = undefined;
-    setEditingText(newEditingTexts);
-  }
-  function updateEditingText(index, id) {
-    const newTodos = [...todos];
-    if (!editingTexts[id]) {
-      setError("sdgdsags");
-    } else {
-      newTodos[index].text = editingTexts[id];
-      setModalEl(newTodos);
-      cancalEditing(id);
-    }
+    setShow(false);
   }
 
   return (
@@ -93,34 +32,30 @@ export let CardList = ({ handleClose, show, setShow }) => {
           {editingTexts[cat1.id] !== undefined ? (
             <EditingItem
               editingTexts={editingTexts}
-              handleEditingText={handleEditingText}
-              error={error}
-              updateEditingText={updateEditingText}
-              cancalEditing={cancalEditing}
               cat1={cat1}
               index={index}
+              setEditingText={setEditingText}
+              setModalEl={setModalEl}
+              todos={todos}
               e
             />
           ) : (
             <NormalItem
-              handleDoneChange={handleDoneChange}
+              editingTexts={editingTexts}
+              setModalEl={setModalEl}
+              todos={todos}
               cat1={cat1}
               index={index}
-              editTodoInline={editTodoInline}
-              handleDelete={handleDelete}
-              text={text}
+              setEditingText={setEditingText}
             />
           )}
         </Card>
       ))}
       <NewModal
-        error={error}
+        onSave={handleSave}
         show={show}
         setShow={setShow}
         handleClose={handleClose}
-        addTodo={addTodo}
-        setText={setText}
-        text={text}
       />
     </>
   );

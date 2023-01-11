@@ -2,12 +2,40 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 export function NormalItem({
-  handleDoneChange,
   cat1,
   index,
-  editTodoInline,
-  handleDelete,
+  todos,
+  setModalEl,
+  setEditingText,
+  editingTexts,
 }) {
+  function handleDoneChange(id) {
+    const newTodos = [...todos];
+
+    let index;
+    for (let i = 0; i < todos.length; i++) {
+      if (id === todos[i].id) {
+        index = i;
+        break;
+      }
+    }
+    newTodos[index].done = !newTodos[index].done;
+    setModalEl(newTodos);
+  }
+  function handleDelete(index) {
+    if (window.confirm("Устгах уу ?")) {
+      const newTodos = [...todos];
+      newTodos.splice(index, 1);
+      setModalEl(newTodos);
+    }
+  }
+  function editTodoInline(id, index) {
+    const newEditingTexts = { ...editingTexts };
+    console.log(newEditingTexts);
+    newEditingTexts[id] = todos[index].text;
+    setEditingText(newEditingTexts);
+  }
+
   return (
     <>
       <Form.Check onChange={(e) => handleDoneChange(cat1.id, e)} />

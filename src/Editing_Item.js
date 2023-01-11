@@ -1,15 +1,36 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import { useState } from "react";
 export function EditingItem({
   editingTexts,
-  handleEditingText,
-  error,
-  updateEditingText,
-  cancalEditing,
   cat1,
   index,
+  setEditingText,
+  setModalEl,
+  todos,
 }) {
+  const [error, setError] = useState("");
+  function cancalEditing(id) {
+    const newEditingTexts = { ...editingTexts };
+    newEditingTexts[id] = undefined;
+    setEditingText(newEditingTexts);
+  }
+  function updateEditingText(index, id) {
+    const newTodos = [...todos];
+    if (!editingTexts[id]) {
+      setError("sdgdsags");
+    } else {
+      newTodos[index].text = editingTexts[id];
+      setModalEl(newTodos);
+      cancalEditing(id);
+    }
+  }
+  function handleEditingText(id, e) {
+    const newEditingTexts = { ...editingTexts };
+    newEditingTexts[id] = e.target.value;
+    setEditingText(newEditingTexts);
+  }
   return (
     <>
       <Card.Body>
