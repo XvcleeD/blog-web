@@ -20,7 +20,6 @@ export let CardList = ({ handleClose, show, setShow }) => {
     setModalEl(newTodos);
     setShow(false);
   }
-
   return (
     <>
       {todos.map((cat1, index) => (
