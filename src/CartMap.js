@@ -1,25 +1,10 @@
 import Card from "react-bootstrap/Card";
-import { useState } from "react";
-import { NewModal } from "./modal";
-import { v4 as uuidv4 } from "uuid";
 import { EditingItem } from "./Editing_Item";
 import { NormalItem } from "./Normal_Item";
+import { useState } from "react";
 
-export let CardList = ({ handleClose, show, setShow }) => {
-  const [todos, setModalEl] = useState([]);
-
+export let CardMap = ({ todos, setModalEl }) => {
   const [editingTexts, setEditingText] = useState({});
-
-  function handleSave(text) {
-    const newTodo = {
-      text: text,
-      done: false,
-      id: uuidv4(),
-    };
-    const newTodos = [newTodo, ...todos];
-    setModalEl(newTodos);
-    setShow(false);
-  }
   return (
     <>
       {todos.map((cat1, index) => (
@@ -50,12 +35,6 @@ export let CardList = ({ handleClose, show, setShow }) => {
           )}
         </Card>
       ))}
-      <NewModal
-        onSave={handleSave}
-        show={show}
-        setShow={setShow}
-        handleClose={handleClose}
-      />
     </>
   );
 };

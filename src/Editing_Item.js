@@ -3,13 +3,14 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import { useState } from "react";
 export function EditingItem({
-  editingTexts,
   cat1,
   index,
   setEditingText,
+  editingTexts,
   setModalEl,
   todos,
 }) {
+  // const [editingTexts, setEditingText] = useState({});
   const [error, setError] = useState("");
   function cancalEditing(id) {
     const newEditingTexts = { ...editingTexts };
