@@ -20,9 +20,13 @@ export function NewModal({ show, handleClose, onSave }) {
       setText("");
     }
   }
+  function Close() {
+    handleClose();
+    setError("");
+  }
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={Close}>
         <Modal.Header closeButton>
           <Modal.Title>Шинэ мэдээ</Modal.Title>
         </Modal.Header>
@@ -39,7 +43,7 @@ export function NewModal({ show, handleClose, onSave }) {
           </InputGroup>
         </label>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={Close}>
             Гарах
           </Button>
           <Button variant="primary" onClick={handleSave}>
