@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-
 import { NewModal } from "./modal";
 import { v4 as uuidv4 } from "uuid";
 import { AngilalCard } from "./angilal";
