@@ -32,6 +32,11 @@ export function EditingItem({
     newEditingTexts[id] = e.target.value;
     setEditingText(newEditingTexts);
   }
+  function handleKeyUp(e) {
+    if (e.code === "Enter") {
+      updateEditingText(index, cat1.id);
+    }
+  }
   return (
     <>
       <Card.Body>
@@ -41,6 +46,7 @@ export function EditingItem({
           aria-label="Small"
           aria-describedby="inputGroup-sizing-sm"
           style={{ borderColor: error ? "red" : "none" }}
+          onKeyUp={handleKeyUp}
         />
         {console.log(editingTexts[cat1.id])}
       </Card.Body>

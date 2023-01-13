@@ -24,6 +24,11 @@ export function NewModal({ show, handleClose, onSave }) {
     handleClose();
     setError("");
   }
+  function handleKeyUp(e) {
+    if (e.code === "Enter") {
+      handleSave();
+    }
+  }
   return (
     <>
       <Modal show={show} onHide={Close}>
@@ -34,11 +39,12 @@ export function NewModal({ show, handleClose, onSave }) {
           <p className=" p-3">Мэдээний нэр</p>
           <InputGroup show={show} size="sm" className="mb-3 p-3 pt-0">
             <Form.Control
-              value={text} 
+              value={text}
               onChange={handleTextChange}
               aria-label="Small"
               aria-describedby="inputGroup-sizing-sm"
               style={{ borderColor: error ? "red" : "none" }}
+              onKeyUp={handleKeyUp}
             />
           </InputGroup>
         </label>
