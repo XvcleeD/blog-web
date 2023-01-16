@@ -57,6 +57,7 @@ export function NormalItem({
       <Button variant="danger" onClick={() => handleDelete(index)}>
         Устгах
       </Button>
+      <Button></Button>
     </>
   );
 }
