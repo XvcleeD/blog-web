@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import { useState } from "react";
+import { toast } from "react-toastify";
 export function EditingItem({
   cat1,
   index,
@@ -25,6 +26,16 @@ export function EditingItem({
       newTodos[index].text = editingTexts[id];
       setModalEl(newTodos);
       cancalEditing(id);
+      toast.success("Амжилттай хадгаллаа", {
+        position: "bottom-right",
+        autoClose: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   }
   function handleEditingText(id, e) {

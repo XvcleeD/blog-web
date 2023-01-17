@@ -3,55 +3,32 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavbarEl } from "./nabvar";
 import { Body } from "./body";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
-import { BasicExample } from "./ tester";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ClientApp } from "./ ClientApp";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Container } from "react-bootstrap";
 
-const router = createBrowserRouter([
-  {
-    path: "admin",
-    element: (
-      <div>
-        <h1>sgrefdgvser</h1>
-      </div>
-    ),
-    children: [
-      // {
-      //   path: "hhh",
-      //   element: (
-      //     <div>
-      //       <h1>askjhglhsdkfh</h1>
-      //     </div>
-      //   ),
-      // },
-      {
-        path: "/todo",
-        element: <NavScrollExample />,
-      },
-    ],
-  },
-
-  {
-    path: "*",
-    element: (
-      <>
-        <BasicExample />
-        <Link to="admin">gjfggfhfg</Link>
-      </>
-    ),
-  },
-]);
-
 export function App() {
-  return <RouterProvider router={router} />;
-}
-function NavScrollExample() {
   return (
     <>
-      <NavbarEl />
-      <Container>
-        <Body />
-      </Container>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/admin/*"
+            element={
+              <>
+                <NavbarEl />
+                <Container>
+                  <Body />
+                </Container>
+              </>
+            }
+          />
+          <Route path="*" element={<ClientApp />} />
+        </Routes>
+        <ToastContainer position="top-right" />
+      </BrowserRouter>
     </>
   );
 }
