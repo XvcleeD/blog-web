@@ -6,11 +6,12 @@ export function ClientApp() {
   return (
     <div>
       <Link to="/">Home</Link> <Link to="/blog">Blog</Link>
+      <Link to="/admin"> admin</Link>
       <Routes>
         <Route path="/" element={<div>Home page</div>} />
         <Route path="/blog" element={<div>Blog list</div>} />
         <Route path="/blog/:slug" element={<SingleBlog />} />
-            <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

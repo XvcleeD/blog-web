@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 export let NavbarEl = () => {
   return (
@@ -16,7 +17,9 @@ export let NavbarEl = () => {
               className="text-light navbar-nav-scroll me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
             >
-              <Nav.Link href="#action1">Хэрэглэгч</Nav.Link>
+              <Nav.Link to="/" as={Link}>
+                Хэрэглэгч
+              </Nav.Link>
               <Nav.Link href="#action2">Ангилал</Nav.Link>
               <NavDropdown title="Мэдээ">
                 <NavDropdown.Item href="#action3">Мэдээ</NavDropdown.Item>
