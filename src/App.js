@@ -8,6 +8,7 @@ import { ClientApp } from "./ ClientApp";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Container } from "react-bootstrap";
+import { SingUp } from "./sing_up";
 
 export function App() {
   return (
@@ -25,6 +26,7 @@ export function App() {
               </>
             }
           />
+          <Route path="/singUp" element={<SingUp />} />
           <Route path="*" element={<ClientApp />} />
         </Routes>
         <ToastContainer position="top-right" />

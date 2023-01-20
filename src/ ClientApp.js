@@ -7,6 +7,7 @@ export function ClientApp() {
     <div>
       <Link to="/">Home</Link> <Link to="/blog">Blog</Link>
       <Link to="/admin"> admin</Link>
+      <Link to="/singUp"> sing_up</Link>
       <Routes>
         <Route path="/" element={<div>Home page</div>} />
         <Route path="/blog" element={<div>Blog list</div>} />
