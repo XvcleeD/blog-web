@@ -5,7 +5,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 export function SingUp() {
   return (
-    <Form className="container ">
+    <Form className="container my-auto d-flex" style={{ height: "100vh" }}>
       <Card className=" col-10 col-lg-7 col-lx-7 col-xxl-6 p-5 m-auto">
         <Card.Body className="gap-2 d-flex flex-column col-12 col-sm-12 col-md-10 m-auto">
           <Card.Title>Sing Up</Card.Title>
@@ -38,7 +38,9 @@ export function SingUp() {
             <Form.Label>Must be at least 8 characters.</Form.Label>
           </Form.Group>
 
-          <Button className="p-2">Creare account</Button>
+          <Button className="p-2" to="/" as={Link}>
+            Creare account
+          </Button>
           <Form.Label className="d-flex justify-content-center ">
             Already have an account? <Link>Log in</Link>
           </Form.Label>

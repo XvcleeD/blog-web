@@ -1,12 +1,10 @@
-// import Alert from "react-bootstrap/Alert";
-// import { Link } from "react-router-dom";
-import { Link, Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import { BlogPageHome } from "./blog_page";
 import { BlogNav } from "./blog_navbar";
 
 export function ClientApp() {
   return (
-    <div>
+    <>
       <BlogNav />
       <Routes>
         <Route path="/" element={<BlogPageHome />} />
@@ -14,10 +12,7 @@ export function ClientApp() {
         <Route path="/blog/:slug" element={<SingleBlog />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Link to="/">Home</Link> <Link to="/blog">Blog</Link>
-      <Link to="/admin"> admin</Link>
-      <Link to="/singUp"> sing_up</Link>
-    </div>
+    </>
   );
 }
 function SingleBlog() {
