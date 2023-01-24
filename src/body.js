@@ -6,6 +6,7 @@ import { AngilalCard } from "./angilal";
 import { CardMap } from "./CartMap";
 import { toast } from "react-toastify";
 import { Articles } from "./ckeditior";
+import { Route, Routes } from "react-router-dom";
 
 export function Body() {
   const [show, setShow] = useState(false);
@@ -35,11 +36,18 @@ export function Body() {
   }
   return (
     <>
-      <div className="row mt-5 container m-auto justify-content-center">
-        <AngilalCard handleShow={handleShow} />
-        <CardMap todos={todos} setModalEl={setModalEl} />
-        <Articles />
-      </div>
+      <Routes>
+        <Route path="/shineMedee" element={<Articles />} />
+        <Route
+          path="*"
+          element={
+            <div className="row mt-5 container m-auto justify-content-center">
+              <AngilalCard handleShow={handleShow} />
+              <CardMap todos={todos} setModalEl={setModalEl} />
+            </div>
+          }
+        />
+      </Routes>
       <NewModal
         onSave={handleSave}
         show={show}

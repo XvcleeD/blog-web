@@ -17,13 +17,12 @@ export function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/admin/*"
+            path="/admin"
             element={
               <>
                 <NavbarEl />
                 <Container>
                   <Body />
-                  
                 </Container>
               </>
             }

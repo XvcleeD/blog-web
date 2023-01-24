@@ -25,7 +25,9 @@ export let NavbarEl = () => {
                 <NavDropdown.Item href="#action3">Мэдээ</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Сэтгэгдэл</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">Шинэ мэдээ</NavDropdown.Item>
+                <NavDropdown.Item to="admin/shineMedee" as={Link}>
+                  Шинэ мэдээ
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="#">Сэдэв</Nav.Link>
             </Nav>
