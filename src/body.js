@@ -37,7 +37,7 @@ export function Body() {
   return (
     <>
       <Routes>
-        <Route path="/shineMedee" element={<Articles />} />
+        <Route path="medeenemeh" element={<Articles />} />
         <Route
           path="*"
           element={
