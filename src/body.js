@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { AngilalCard } from "./angilal";
 import { CardMap } from "./CartMap";
 import { toast } from "react-toastify";
+import { Articles } from "./ckeditior";
 
 export function Body() {
   const [show, setShow] = useState(false);
@@ -37,6 +38,7 @@ export function Body() {
       <div className="row mt-5 container m-auto justify-content-center">
         <AngilalCard handleShow={handleShow} />
         <CardMap todos={todos} setModalEl={setModalEl} />
+        <Articles />
       </div>
       <NewModal
         onSave={handleSave}

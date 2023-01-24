@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Container } from "react-bootstrap";
 import { SingUp } from "./sing_up";
+import { Login } from "./log_in";
 
 export function App() {
   return (
@@ -22,11 +23,13 @@ export function App() {
                 <NavbarEl />
                 <Container>
                   <Body />
+                  
                 </Container>
               </>
             }
           />
           <Route path="/singUp" element={<SingUp />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="*" element={<ClientApp />} />
         </Routes>
         <ToastContainer position="top-right" />
