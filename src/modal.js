@@ -4,21 +4,32 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
-
-export function NewModal({ show, handleClose, onSave }) {
-  const [text, setText] = useState("");
+export function NewModal({ show, handleClose, onComplete }) {
   const [error, setError] = useState("");
-  function handleTextChange(event) {
-    setText(event.target.value);
-  }
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+
   function handleSave() {
-    if (text === "") {
+    if (name === "") {
       setError("utgaa bichnuu");
     } else {
+      setLoading(true);
+      axios
+        .post("http://localhost:3001/categories", {
+          name: name,
+        })
+        .then((res) => {
+          const { status } = res;
+          if (status === 201) {
+            onComplete();
+            Close();
+            setLoading(false);
+          }
+        });
       setError("");
-      onSave(text);
-      setText("");
+      setName("");
     }
   }
   function Close() {
@@ -30,6 +41,7 @@ export function NewModal({ show, handleClose, onSave }) {
       handleSave();
     }
   }
+
   return (
     <>
       <Modal show={show} onHide={Close}>
@@ -40,8 +52,9 @@ export function NewModal({ show, handleClose, onSave }) {
           <p className=" p-3">Мэдээний нэр</p>
           <InputGroup show={show} size="sm" className="mb-3 p-3 pt-0">
             <Form.Control
-              value={text}
-              onChange={handleTextChange}
+              disabled={loading}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               aria-label="Small"
               aria-describedby="inputGroup-sizing-sm"
               style={{ borderColor: error ? "red" : "none" }}
@@ -50,10 +63,10 @@ export function NewModal({ show, handleClose, onSave }) {
           </InputGroup>
         </label>
         <Modal.Footer>
-          <Button variant="secondary" onClick={Close}>
+          <Button disabled={loading} variant="secondary" onClick={Close}>
             Гарах
           </Button>
-          <Button variant="primary" onClick={handleSave}>
+          <Button disabled={loading} variant="primary" onClick={handleSave}>
             Хадгалах
           </Button>
         </Modal.Footer>

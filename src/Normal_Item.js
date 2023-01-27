@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
 
 export function NormalItem({
   cat1,
@@ -9,6 +10,7 @@ export function NormalItem({
   setModalEl,
   setEditingText,
   editingTexts,
+  loadCategories,
 }) {
   function handleDoneChange(id) {
     const newTodos = [...todos];
@@ -25,15 +27,19 @@ export function NormalItem({
   }
   function handleDelete(index) {
     if (window.confirm("Устгах уу ?")) {
-      const newTodos = [...todos];
-      newTodos.splice(index, 1);
-      setModalEl(newTodos);
+      axios
+        .delete(`http://localhost:3001/categories/${cat1.id}`)
+        .then((res) => {
+          const { data, status } = res;
+          console.log({ data, status });
+        });
+      loadCategories();
     }
   }
   function editTodoInline(id, index) {
     const newEditingTexts = { ...editingTexts };
-    console.log(newEditingTexts);
-    newEditingTexts[id] = todos[index].text;
+    // // console.log(newEditingTexts);
+    newEditingTexts[id] = todos[index].name;
     setEditingText(newEditingTexts);
   }
 
@@ -47,7 +53,7 @@ export function NormalItem({
           textDecoration: cat1.done ? "line-through" : "none",
         }}
       >
-        {cat1.text}
+        {cat1.name}
       </Card.Body>
       {!cat1.done && (
         <Button variant="light" onClick={() => editTodoInline(cat1.id, index)}>
