@@ -1,19 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { NewModal } from "./modal";
-import { AngilalCard } from "./angilal";
 import { CardMap } from "./CartMap";
 // import { toast } from "react-toastify";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import { Articles } from "./ckeditior";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
 export function Body() {
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
   const [todos, setModalEl] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams({});
 
   function loadCategories() {
     axios.get("http://localhost:3001/categories").then((res) => {
@@ -28,6 +27,9 @@ export function Body() {
   useEffect(() => {
     loadCategories();
   }, []);
+  useEffect(() => {
+    loadCategories(searchParams);
+  }, [searchParams]);
   function handleComplete() {
     loadCategories();
     // toast.success("Амжилттай үүслээ", {
@@ -41,6 +43,11 @@ export function Body() {
     //   theme: "dark",
     // });
   }
+  function closeModal() {
+    setSearchParams({});
+  }
+
+  const editing = searchParams.get("editing");
 
   return (
     <>
@@ -49,24 +56,32 @@ export function Body() {
         <Route
           path="*"
           element={
-            <div className="row mt-5 container m-auto justify-content-center">
-              <AngilalCard handleShow={handleShow} />
-              <CardMap
-                todos={todos}
-                setModalEl={setModalEl}
-                onComplete={handleComplete}
-                loadCategories={loadCategories}
-              />
-            </div>
+            <>
+              <div className="row mt-5 container m-auto justify-content-center">
+                <Card className="d-flex py-3 col-sm-11 col-md-8 col-12 flex-row justify-content-between border-0">
+                  <h1 className="col">Ангилал</h1>
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => setSearchParams({ editing: "new" })}
+                  >
+                    шинэ
+                  </Button>
+                </Card>
+                <CardMap
+                  todos={todos}
+                  setModalEl={setModalEl}
+                  onComplete={handleComplete}
+                  loadCategories={loadCategories}
+                />
+              </div>
+            </>
           }
         />
       </Routes>
       <NewModal
         onComplete={handleComplete}
-        // onSave={handleSave}
-        show={show}
-        setShow={setShow}
-        handleClose={handleClose}
+        show={editing}
+        handleClose={closeModal}
       />
     </>
   );

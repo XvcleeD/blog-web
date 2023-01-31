@@ -30,15 +30,15 @@ export function NormalItem({
       axios
         .delete(`http://localhost:3001/categories/${cat1.id}`)
         .then((res) => {
-          const { data, status } = res;
-          console.log({ data, status });
+          // const { data, status } = res;
+          // console.log({ data, status });
+          loadCategories();
         });
-      loadCategories();
     }
   }
   function editTodoInline(id, index) {
     const newEditingTexts = { ...editingTexts };
-    // // console.log(newEditingTexts);
+    // console.log(newEditingTexts);
     newEditingTexts[id] = todos[index].name;
     setEditingText(newEditingTexts);
   }
