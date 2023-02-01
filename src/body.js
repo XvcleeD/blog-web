@@ -3,6 +3,7 @@ import { useState } from "react";
 import { NewModal } from "./modal";
 import { CardMap } from "./CartMap";
 // import { toast } from "react-toastify";
+import { useDebounce } from "use-debounce";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Articles } from "./ckeditior";
@@ -12,10 +13,12 @@ import { useEffect } from "react";
 
 export function Body() {
   const [todos, setModalEl] = useState([]);
+  const [query, setQuery] = useState("");
+  const [searchedQuery] = useDebounce(query, 1000);
   const [searchParams, setSearchParams] = useSearchParams({});
 
   function loadCategories() {
-    axios.get("http://localhost:3001/categories").then((res) => {
+    axios.get(`http://localhost:3001/categories?q=${query}`).then((res) => {
       const { data, status } = res;
       if (status === 200) {
         setModalEl(data);
@@ -28,8 +31,8 @@ export function Body() {
     loadCategories();
   }, []);
   useEffect(() => {
-    loadCategories(searchParams);
-  }, [searchParams]);
+    loadCategories(searchedQuery);
+  }, [searchedQuery]);
   function handleComplete() {
     loadCategories();
     // toast.success("Амжилттай үүслээ", {
@@ -52,9 +55,9 @@ export function Body() {
   return (
     <>
       <Routes>
-        <Route path="medeenemeh" element={<Articles />} />
+        <Route path="/articles" element={<Articles />} />
         <Route
-          path="*"
+          path="/categories"
           element={
             <>
               <div className="row mt-5 container m-auto justify-content-center">
@@ -67,6 +70,11 @@ export function Body() {
                     шинэ
                   </Button>
                 </Card>
+                <input
+                  className="col-ms-9 col-md-5 col-10"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
                 <CardMap
                   todos={todos}
                   setModalEl={setModalEl}

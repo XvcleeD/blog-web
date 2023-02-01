@@ -17,7 +17,7 @@ export function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="admin"
+            path="/admin/*"
             element={
               <>
                 <NavbarEl />
@@ -27,8 +27,8 @@ export function App() {
               </>
             }
           />
-          <Route path="singUp" element={<SingUp />} />
-          <Route path="Login" element={<Login />} />
+          <Route path="/singUp" element={<SingUp />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="*" element={<ClientApp />} />
         </Routes>
         <ToastContainer position="top-right" />

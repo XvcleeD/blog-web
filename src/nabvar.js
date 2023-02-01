@@ -20,12 +20,14 @@ export let NavbarEl = () => {
               <Nav.Link to="/" as={Link}>
                 Хэрэглэгч
               </Nav.Link>
-              <Nav.Link href="#action2">Ангилал</Nav.Link>
+              <Nav.Link to="categories" as={Link}>
+                Ангилал
+              </Nav.Link>
               <NavDropdown title="Мэдээ">
                 <NavDropdown.Item href="#action3">Мэдээ</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Сэтгэгдэл</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item to="medeenemeh" as={Link}>
+                <NavDropdown.Item to="articles" as={Link}>
                   Шинэ мэдээ
                 </NavDropdown.Item>
               </NavDropdown>

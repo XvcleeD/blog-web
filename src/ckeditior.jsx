@@ -6,7 +6,7 @@ export function Articles() {
     const [text, setText] = useState();
 
     return (
-        <>
+        <div className="mt-5 pt-5">
             <CKEditor
                 editor={ClassicEditor}
                 data={text}
@@ -20,6 +20,6 @@ export function Articles() {
             <div>{text}</div>
 
             <div dangerouslySetInnerHTML={{ __html: text }}></div>
-        </>
+        </div>
     );
 }
