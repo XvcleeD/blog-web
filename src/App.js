@@ -1,15 +1,15 @@
 // import logo from './logo.svg';
 // import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavbarEl } from "./nabvar";
-import { Body } from "./body";
+import { NavbarEl } from "./components/admin/nabvar";
+import { Body } from "./components/admin/body";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ClientApp } from "./ ClientApp";
+import { ClientApp } from "./components/client/ ClientApp";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Container } from "react-bootstrap";
-import { SingUp } from "./sing_up";
-import { Login } from "./log_in";
+import { SingUp } from "./components/admin/sing_up";
+import { Login } from "./components/admin/log_in";
 
 export function App() {
   return (

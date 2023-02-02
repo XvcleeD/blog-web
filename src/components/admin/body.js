@@ -6,6 +6,7 @@ import { CardMap } from "./CartMap";
 import { useDebounce } from "use-debounce";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { ArticlesNew } from "./articlesNew";
 import { Articles } from "./ckeditior";
 import { Route, Routes, useSearchParams } from "react-router-dom";
 import axios from "axios";
@@ -56,6 +57,7 @@ export function Body() {
     <>
       <Routes>
         <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/new" element={<ArticlesNew />} />
         <Route
           path="/categories"
           element={
