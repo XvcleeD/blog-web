@@ -23,3 +23,7 @@ code {
 .content table td {
   border: 1px solid black;
 }
+
+.blogItem-author img{
+  width: 100px;
+}
