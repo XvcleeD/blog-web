@@ -17,7 +17,7 @@ export function BlogList() {
   }, []);
 
   return (
-    <div className="blogList-wrap">
+    <div className="blogList-wrap container m-auto">
       {article?.map((blog) => (
         <BlogItem blog={blog} key={blog.id} />
       ))}
