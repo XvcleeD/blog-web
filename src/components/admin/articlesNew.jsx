@@ -26,6 +26,7 @@ export function ArticlesNew() {
 
   return (
     <>
+      <h1 className="mb-4">Шинэ мэдээ</h1>
       <CategoriesSelector
         value={categoryId}
         onChange={(val) => setCategoryId(val)}
@@ -36,8 +37,10 @@ export function ArticlesNew() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <h1 className="mb-4">Шинэ мэдээ</h1>
-      <div className="mt-5 pt-5">
+
+      {/* <input type={URL} */}
+      
+      <div className="mt-5">
         <CKEditor
           editor={ClassicEditor}
           data={text}
