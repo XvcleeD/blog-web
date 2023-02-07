@@ -58,7 +58,6 @@ function SingleBlog() {
         {article.category?.name}
       </span>
       <h1 className="mb-4">{article.title}</h1>
-
       <div className="content">{parse(article.text)}</div>
     </div>
   );

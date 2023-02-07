@@ -8,6 +8,7 @@ export function ArticlesNew() {
   const [text, setText] = useState();
   const [title, setTitle] = useState("");
   const [categoryId, setCategoryId] = useState("");
+  const [backgaround, setBackgaround] = useState("");
 
   function submit() {
     axios
@@ -15,6 +16,7 @@ export function ArticlesNew() {
         title,
         categoryId,
         text,
+        backgaround,
       })
       .then((res) => {
         const { status } = res;
@@ -37,9 +39,13 @@ export function ArticlesNew() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-
-      {/* <input type={URL} */}
-      
+      <input
+        type="url"
+        id="homepage"
+        name="homepage"
+        value={backgaround}
+        onChange={(e) => setBackgaround(e.target.value)}
+      />
       <div className="mt-5">
         <CKEditor
           editor={ClassicEditor}

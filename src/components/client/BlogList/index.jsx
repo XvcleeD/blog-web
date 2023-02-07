@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import BlogItem from "./BlogItem";
+import "./style.css";
 
 export function BlogList() {
   const [article, setArticle] = useState([]);
@@ -17,7 +18,7 @@ export function BlogList() {
   }, []);
 
   return (
-    <div className="blogList-wrap container m-auto">
+    <div className="blogList-wrap container mt-5">
       {article?.map((blog) => (
         <BlogItem blog={blog} key={blog.id} />
       ))}
