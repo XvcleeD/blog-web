@@ -23,7 +23,7 @@ function SingleBlog() {
   const { id } = useParams();
   const [article, setArticle] = useState();
   // const [category, setCategory] = useState();
-
+ 
   useEffect(() => {
     axios.get(`http://localhost:3001/articles/${id}`).then((res) => {
       const { data, status } = res;
