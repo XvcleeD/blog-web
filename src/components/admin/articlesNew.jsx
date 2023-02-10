@@ -3,7 +3,6 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { useState } from "react";
 import axios from "axios";
 import { CategoriesSelector } from "./categoriesSelector";
-import InputGtoup from "react";
 
 export function ArticlesNew() {
   const [text, setText] = useState();
@@ -35,16 +34,16 @@ export function ArticlesNew() {
         value={categoryId}
         onChange={(val) => setCategoryId(val)}
       />
-      <InputGtoup>
-        <label>title</label>
-        <input
-          type="text"
-          className="form-control mt-4 mb-4"
-          placeholder="Мэдээний гарчиг"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </InputGtoup>
+
+      <label>title</label>
+      <input
+        type="text"
+        className="form-control mt-4 mb-4"
+        placeholder="Мэдээний гарчиг"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
       <label>cover</label>
       <input
         type="url"

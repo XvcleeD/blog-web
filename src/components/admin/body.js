@@ -11,6 +11,8 @@ import { Articles } from "./ckeditior";
 import { Route, Routes, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { AdminBlogList } from "./adminBloglist";
+
 
 export function Body() {
   const [todos, setModalEl] = useState([]);
@@ -56,6 +58,7 @@ export function Body() {
   return (
     <>
       <Routes>
+        <Route path="/articles/list" element={<AdminBlogList />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/new" element={<ArticlesNew />} />
         <Route
