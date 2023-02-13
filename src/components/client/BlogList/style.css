@@ -15,7 +15,7 @@
     grid-template-columns: repeat(1,1fr);
   }
 }
-.blogItem-wrap{
+/* .blogItem-wrap{
   display: flex;
   flex-direction: column;
 
@@ -78,4 +78,4 @@
   color: #a9a9a9;
   font-weight: 600;
 
-}
+} */
