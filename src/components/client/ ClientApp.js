@@ -6,11 +6,13 @@ import { BlogPageHome } from "./blog_page";
 import { BlogNav } from "./blog_navbar";
 import { BlogListTest } from "./BlogList/index-test";
 import { BlogList } from "./BlogList/index";
+import { BasicExample } from "./categoryNavList";
 
 export function ClientApp() {
   return (
     <>
       <BlogNav />
+      <BasicExample />
       <Routes>
         <Route path="/" element={<BlogPageHome />} />
         <Route path="/blog" element={<BlogList />} />

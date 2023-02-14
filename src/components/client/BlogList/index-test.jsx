@@ -62,7 +62,7 @@ export function BlogListTest() {
           {[...Array(pages)].map((_, index) => (
             <li
               key={index}
-              class={`page-item ${page == index + 1 ? "active" : ""}`}
+              class={`page-item ${page === index + 1 ? "active" : ""}`}
             >
               <Link to={`?page=${index + 1}`} class="page-link">
                 {index + 1}

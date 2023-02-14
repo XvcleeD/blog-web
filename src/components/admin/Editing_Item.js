@@ -61,7 +61,7 @@ export function EditingItem({
           style={{ borderColor: error ? "red" : "none" }}
           onKeyUp={handleKeyUp}
         />
-        {console.log(editingTexts[cat1.id])}
+        {/* {console.log(editingTexts[cat1.id])} */}
       </Card.Body>
       <Button onClick={() => updateEditingText(index, cat1.id)}>
         Хадгалах

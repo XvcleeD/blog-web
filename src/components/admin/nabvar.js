@@ -9,7 +9,7 @@ export let NavbarEl = () => {
   return (
     <>
       <Navbar bg="secondary" expand="lg">
-        <Container fluid>
+        <Container className="container" fluid>
           <Navbar.Brand href="#">Админ</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse>
@@ -35,7 +35,9 @@ export let NavbarEl = () => {
               </NavDropdown>
               <Nav.Link href="#">Сэдэв</Nav.Link>
             </Nav>
-            <Button variant="light">Гарах</Button>
+            <Button as={Link} to="/" variant="light">
+              Гарах
+            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>

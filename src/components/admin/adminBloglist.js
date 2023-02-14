@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import "./style.css";
 import Chip from "../../common/Chip/index";
 
@@ -24,12 +23,12 @@ export function AdminBlogList() {
     <div className="blogList-wrap container mt-5">
       {article?.map((blog) => (
         <div key={blog.id} className="blogItem-wrap">
-          {/* <img src={blog.backgaround} alt="cover" className="blogItem-cover" /> */}
-          <Chip label={blog.tags[1]} />
+          <img src={blog.backgaround} alt="cover" className="blogItem-cover" />
+          <Chip label={blog.category.name} />
           <h3>{blog.title}</h3>
           <footer>
             <div className="blogItem-author">
-              {/* <div>{parse(text)}</div> */}
+              {/* <di>{parse(text)}</di  v> */}
             </div>
             <Link className="blogItem-link" to={`/blog/${blog.id}`}>
               →

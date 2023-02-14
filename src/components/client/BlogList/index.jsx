@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import BlogItem from "./BlogItem";
 import "./style.css";
-import { Link, useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 
 export function BlogList() {
   const [article, setArticle] = useState([]);
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
 
   function loadArticles() {
     axios.get(`http://localhost:3001/articles`).then((res) => {

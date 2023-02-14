@@ -20,7 +20,7 @@ export function App() {
             path="/admin/*"
             element={
               <>
-                <NavbarEl />
+                  <NavbarEl />
                 <Container>
                   <Body />
                 </Container>
