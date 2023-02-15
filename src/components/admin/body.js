@@ -13,7 +13,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { AdminBlogList } from "./adminBloglist";
 
-
 export function Body() {
   const [todos, setModalEl] = useState([]);
   const [query, setQuery] = useState("");
@@ -81,6 +80,7 @@ export function Body() {
                   onChange={(e) => setQuery(e.target.value)}
                 />
                 <CardMap
+                  
                   todos={todos}
                   setModalEl={setModalEl}
                   onComplete={handleComplete}

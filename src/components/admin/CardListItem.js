@@ -8,6 +8,7 @@ export function CardListItem({
   cat1,
   index,
   loadCategories,
+  
 }) {
   const [editingTexts, setEditingText] = useState({});
   return (
@@ -21,10 +22,10 @@ export function CardListItem({
           setModalEl={setModalEl}
           todos={todos}
           loadCategories={loadCategories}
-          
         />
       ) : (
         <NormalItem
+        
           loadCategories={loadCategories}
           editingTexts={editingTexts}
           setModalEl={setModalEl}

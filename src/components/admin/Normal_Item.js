@@ -7,7 +7,6 @@ export function NormalItem({
   cat1,
   index,
   todos,
-
   setEditingText,
   editingTexts,
   loadCategories,
