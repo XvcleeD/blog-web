@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import BlogItem from "./BlogItem";
 import "./style.css";
+
 // import { useSearchParams } from "react-router-dom";
 
 export function BlogList() {
   const [article, setArticle] = useState([]);
+  const { categoryId } = useParams();
   // const [searchParams] = useSearchParams();
-
+  console.log(categoryId);
   function loadArticles() {
     axios.get(`http://localhost:3001/articles`).then((res) => {
       const { data, status } = res;
@@ -34,7 +37,7 @@ export function BlogList() {
   //   });
   // }, []);
 
-  // console.log(article);
+  console.log(article);
   return (
     <div className="blogList-wrap container mt-5">
       {article?.map((blog) => (

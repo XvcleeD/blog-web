@@ -40,16 +40,18 @@ function SingleBlog() {
   }, []);
 
   // useEffect(() => {
-  //     if (article) {
-  //         axios.get(`http://localhost:8000/categories/${article.categoryId}`).then((res) => {
-  //             const { data, status } = res;
-  //             if (status === 200) {
-  //                 setCategory(data);
-  //             } else {
-  //                 alert(`Aldaa garlaa: ${status}`);
-  //             }
-  //         });
-  //     }
+  //   if (article) {
+  //     axios
+  //       .get(`http://localhost:3001/categories/${article.categoryId}`)
+  //       .then((res) => {
+  //         const { data, status } = res;
+  //         if (status === 200) {
+  //           setCategory(data);
+  //         } else {
+  //           alert(`Aldaa garlaa: ${status}`);
+  //         }
+  //       });
+  //   }
   // }, [article]);
 
   if (!article) return <div>Loading...</div>;
