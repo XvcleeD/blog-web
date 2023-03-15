@@ -8,8 +8,8 @@ import { ClientApp } from "./components/client/ ClientApp";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Container } from "react-bootstrap";
-import { SingUp } from "./components/admin/sing_up";
-import { Login } from "./components/admin/log_in";
+// import { SingUp } from "./components/admin/sing_up";
+// import { Login } from "./components/admin/log_in";
 
 export function App() {
   return (
@@ -20,15 +20,15 @@ export function App() {
             path="/admin/*"
             element={
               <>
-                  <NavbarEl />
+                <NavbarEl />
                 <Container>
                   <Body />
                 </Container>
               </>
             }
           />
-          <Route path="/singUp" element={<SingUp />} />
-          <Route path="/Login" element={<Login />} />
+          {/* <Route path="/singUp" element={<SingUp />} /> */}
+          {/* <Route path="/Login" element={<Login />} /> */}
           <Route path="*" element={<ClientApp />} />
         </Routes>
         <ToastContainer position="top-right" />

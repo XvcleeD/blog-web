@@ -25,7 +25,8 @@ export function CardListItem({
         />
       ) : (
         <NormalItem
-        
+          onComplete={() => {
+          window.location = "/admin/categories";}}
           loadCategories={loadCategories}
           editingTexts={editingTexts}
           setModalEl={setModalEl}

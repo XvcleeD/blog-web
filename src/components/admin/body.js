@@ -12,6 +12,7 @@ import { Route, Routes, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import { AdminBlogList } from "./adminBloglist";
+import { Login } from "./log_in";
 
 export function Body() {
   const [todos, setModalEl] = useState([]);
@@ -20,14 +21,17 @@ export function Body() {
   const [searchParams, setSearchParams] = useSearchParams({});
 
   function loadCategories() {
-    axios.get(`http://localhost:3001/categories?q=${query}`).then((res) => {
-      const { data, status } = res;
-      if (status === 200) {
-        setModalEl(data);
-      } else {
-        alert(`Aldaa garlaa ${status}`);
-      }
-    });
+    const token = localStorage.getItem("loginToken");
+    axios
+      .get(`http://localhost:3001/categories?q=${query}&token=${token}`)
+      .then((res) => {
+        const { data, status } = res;
+        if (status === 200) {
+          setModalEl(data);
+        } else {
+          alert(`Aldaa garlaa ${status}`);
+        }
+      });
   }
   useEffect(() => {
     loadCategories();
@@ -50,6 +54,9 @@ export function Body() {
   }
   function closeModal() {
     setSearchParams({});
+  }
+  if (!localStorage.getItem("loginToken")) {
+    return <Login />;
   }
 
   const editing = searchParams.get("editing");
@@ -80,7 +87,6 @@ export function Body() {
                   onChange={(e) => setQuery(e.target.value)}
                 />
                 <CardMap
-                  
                   todos={todos}
                   setModalEl={setModalEl}
                   onComplete={handleComplete}

@@ -6,6 +6,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
 export let NavbarEl = () => {
+  function logout() {
+    localStorage.removeItem("loginToken");
+    window.location.reload();
+  }
   return (
     <>
       <Navbar bg="secondary" expand="lg">
@@ -35,7 +39,7 @@ export let NavbarEl = () => {
               </NavDropdown>
               <Nav.Link href="#">Сэдэв</Nav.Link>
             </Nav>
-            <Button as={Link} to="/" variant="light">
+            <Button onClick={logout} as={Link} to="/" variant="light">
               Гарах
             </Button>
           </Navbar.Collapse>
