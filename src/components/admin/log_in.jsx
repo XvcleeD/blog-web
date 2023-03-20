@@ -8,6 +8,7 @@ import { useState } from "react";
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  console.log(username, password);
   function handleLogin() {
     axios
       .get(
