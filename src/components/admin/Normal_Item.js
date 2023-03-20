@@ -14,7 +14,7 @@ export function NormalItem({
   function handleDelete(index) {
     if (window.confirm("Устгах уу ?")) {
       axios
-        .delete(`http://localhost:3001/categories/${cat1.id}`)
+        .delete(`http://localhost:3001/categories/${cat1._id}`)
         .then((res) => {
           loadCategories();
         });
@@ -39,7 +39,7 @@ export function NormalItem({
         {cat1.name}
       </Card.Body>
       {/* {!cat1.done && ( */}
-      <Button variant="light" onClick={() => editTodoInline(cat1.id, index)}>
+      <Button variant="light" onClick={() => editTodoInline(cat1._id, index)}>
         засах
       </Button>
       {/* )} */}
