@@ -10,7 +10,7 @@ export function BlogList() {
   const [article, setArticle] = useState([]);
   const { categoryId } = useParams();
   // const [searchParams] = useSearchParams();
-  console.log(categoryId);
+  // console.log(categoryId);
   function loadArticles() {
     axios.get(`http://localhost:3001/articles`).then((res) => {
       const { data, status } = res;
@@ -37,11 +37,13 @@ export function BlogList() {
   //   });
   // }, []);
 
-  console.log(article);
+  console.log(article.list
+    );
   return (
     <div className="blogList-wrap container mt-5">
-      {article?.map((blog) => (
-        <BlogItem blog={blog} key={blog.id} />
+      {article.list.map((blog) => (
+        console.log(blog)
+        // <BlogItem />
       ))}
     </div>
   );

@@ -6,6 +6,7 @@ import Chip from "../../../../common/Chip/index";
 
 const BlogItem = ({ blog: { id, title, backgaround, category } }) => (
   <div className="blogItem-wrap">
+    
     <img src={backgaround} alt="cover" className="blogItem-cover" />
     <Chip label={category.name} />
     <h3>{title}</h3>
