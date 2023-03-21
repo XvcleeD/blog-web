@@ -13,21 +13,21 @@ export function EditingItem({
 }) {
   // const [editingTexts, setEditingText] = useState({});
   const [error, setError] = useState("");
-  function cancalEditing(id) {
+  function cancalEditing(_id) {
     loadCategories();
     const newEditingTexts = { ...editingTexts };
-    newEditingTexts[id] = undefined;
+    newEditingTexts[_id] = undefined;
     setEditingText(newEditingTexts);
   }
 
-  function updateEditingText(index, id) {
-    if (!editingTexts[id]) {
+  function updateEditingText(index, _id) {
+    if (!editingTexts[_id]) {
       setError("sdgdsags");
     } else {
-      const updatedItem = { ...cat1, name: editingTexts[cat1.id] };
-      axios.put(`http://localhost:3001/categories/${id}`, updatedItem);
+      const updatedItem = { ...cat1, name: editingTexts[cat1._id] };
+      axios.put(`http://localhost:3001/categories/${_id}`, updatedItem);
       loadCategories();
-      cancalEditing(id);
+      cancalEditing(_id);
       // toast.success("Амжилттай хадгаллаа", {
       //   position: "bottom-right",
       //   autoClose: false,
@@ -40,22 +40,22 @@ export function EditingItem({
       // });
     }
   }
-  function handleEditingText(id, e) {
+  function handleEditingText(_id, e) {
     const newEditingTexts = { ...editingTexts };
-    newEditingTexts[id] = e.target.value;
+    newEditingTexts[_id] = e.target.value;
     setEditingText(newEditingTexts);
   }
   function handleKeyUp(e) {
     if (e.code === "Enter") {
-      updateEditingText(index, cat1.id);
+      updateEditingText(index, cat1._id);
     }
   }
   return (
     <>
       <Card.Body>
         <Form.Control
-          value={editingTexts[cat1.id]}
-          onChange={(e) => handleEditingText(cat1.id, e)}
+          value={editingTexts[cat1._id]}
+          onChange={(e) => handleEditingText(cat1._id, e)}
           aria-label="Small"
           aria-describedby="inputGroup-sizing-sm"
           style={{ borderColor: error ? "red" : "none" }}
@@ -63,10 +63,10 @@ export function EditingItem({
         />
         {/* {console.log(editingTexts[cat1.id])} */}
       </Card.Body>
-      <Button onClick={() => updateEditingText(index, cat1.id)}>
+      <Button onClick={() => updateEditingText(index, cat1._id)}>
         Хадгалах
       </Button>
-      <Button onClick={() => cancalEditing(cat1.id)}>Болих</Button>
+      <Button onClick={() => cancalEditing(cat1._id)}>Болих</Button>
     </>
   );
 }

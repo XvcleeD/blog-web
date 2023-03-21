@@ -13,7 +13,7 @@ export function CardListItem({
   const [editingTexts, setEditingText] = useState({});
   return (
     <>
-      {editingTexts[cat1.id] !== undefined ? (
+      {editingTexts[cat1._id] !== undefined ? (
         <EditingItem
           editingTexts={editingTexts}
           cat1={cat1}

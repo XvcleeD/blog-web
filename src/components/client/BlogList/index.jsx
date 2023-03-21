@@ -37,8 +37,7 @@ export function BlogList() {
   //   });
   // }, []);
 
-  console.log(article.list
-    );
+  console.log(article);
   return (
     <div className="blogList-wrap container mt-5">
       {article.list.map((blog) => (

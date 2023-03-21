@@ -5,18 +5,36 @@ import axios from "axios";
 import { CategoriesSelector } from "./categoriesSelector";
 
 export function ArticlesNew() {
-  const [text, setText] = useState();
+  const [content, setText] = useState();
   const [title, setTitle] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [backgaround, setBackgaround] = useState("");
+  const [image, setImage] = useState("");
+
+  async function handleFileUpload(event) {
+    const imageFile = event.target.files[0];
+
+    const formDate = new FormData();
+    FormData.append("image", imageFile);
+
+    await fetch("http://localhost:3001/upload-image",{
+      method: "POST", 
+      body: formDate,
+    })
+    .then((res) => res.json())
+    .then((data) => { 
+      setImage(data.file)
+    })
+  }
 
   function submit() {
     axios
       .post("http://localhost:3001/articles", {
         title,
         categoryId,
-        text,
+        content,
         backgaround,
+        image
       })
       .then((res) => {
         const { status } = res;
@@ -52,10 +70,13 @@ export function ArticlesNew() {
         value={backgaround}
         onChange={(e) => setBackgaround(e.target.value)}
       />
+       <div>
+            <input type="file" name="image" onChange={handleFileUpload} />
+       </div>
       <div className="mt-5">
         <CKEditor
           editor={ClassicEditor}
-          data={text}
+          data={content}
           onChange={(event, editor) => {
             const data = editor.getData();
             setText(data);
