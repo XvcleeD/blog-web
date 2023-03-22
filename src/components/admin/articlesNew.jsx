@@ -8,24 +8,25 @@ export function ArticlesNew() {
   const [content, setText] = useState();
   const [title, setTitle] = useState("");
   const [categoryId, setCategoryId] = useState("");
-  const [backgaround, setBackgaround] = useState("");
   const [image, setImage] = useState("");
 
   async function handleFileUpload(event) {
     const imageFile = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    // console.log(formDate)
 
-    const formDate = new FormData();
-    FormData.append("image", imageFile);
-
-    await fetch("http://localhost:3001/upload-image",{
-      method: "POST", 
-      body: formDate,
+    await fetch("http://localhost:3001/upload-image", {
+      method: "POST",
+      body: formData,
     })
-    .then((res) => res.json())
-    .then((data) => { 
-      setImage(data.file)
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        setImage(data.file);
+      });
   }
+
+  // console.log(image);
 
   function submit() {
     axios
@@ -33,8 +34,7 @@ export function ArticlesNew() {
         title,
         categoryId,
         content,
-        backgaround,
-        image
+        image,
       })
       .then((res) => {
         const { status } = res;
@@ -61,18 +61,9 @@ export function ArticlesNew() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-
-      <label>cover</label>
-      <input
-        type="url"
-        id="homepage"
-        name="homepage"
-        value={backgaround}
-        onChange={(e) => setBackgaround(e.target.value)}
-      />
-       <div>
-            <input type="file" name="image" onChange={handleFileUpload} />
-       </div>
+      <div>
+        <input type="file" name="image" onChange={handleFileUpload} />
+      </div>
       <div className="mt-5">
         <CKEditor
           editor={ClassicEditor}

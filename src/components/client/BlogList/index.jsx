@@ -8,7 +8,6 @@ import "./style.css";
 
 export function BlogList() {
   const [article, setArticle] = useState([]);
-  const { categoryId } = useParams();
   // const [searchParams] = useSearchParams();
   // console.log(categoryId);
   function loadArticles() {
@@ -36,14 +35,16 @@ export function BlogList() {
   //     }
   //   });
   // }, []);
-
+  if (!article) return null;
   console.log(article);
   return (
     <div className="blogList-wrap container mt-5">
-      {article.list.map((blog) => (
-        console.log(blog)
-        // <BlogItem />
-      ))}
+      {article.map(
+        (blog) => (
+          <h3>{blog.list[0].title}</h3>
+        )
+        // <BlogItem blog={blog} />
+      )}
     </div>
   );
 }
