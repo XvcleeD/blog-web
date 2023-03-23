@@ -41,7 +41,7 @@ export function BlogList() {
   return (
     <div className="blogList-wrap container mt-5">
       {article.list?.map((blog) => (
-        <BlogItem blog={blog} />
+        <BlogItem blog={blog} key={blog._id} />
       ))}
     </div>
   );

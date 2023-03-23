@@ -17,7 +17,10 @@ export function BasicExample() {
         alert(`Aldaa garlaa: ${status}`);
       }
     });
-  }, []);
+  }, [categories]);
+  console.log(categories);
+
+  if (!categories) return null;
   return (
     <Navbar bg="light" expand="lg">
       <Container>
