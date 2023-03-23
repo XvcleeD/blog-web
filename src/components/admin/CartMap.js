@@ -2,6 +2,7 @@ import Card from "react-bootstrap/Card";
 import { CardListItem } from "./CardListItem";
 
 export let CardMap = ({ todos, setModalEl, onComplete, loadCategories }) => {
+  console.log(todos);
   if (!todos) return null;
   return (
     <>

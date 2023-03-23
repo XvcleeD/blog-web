@@ -18,7 +18,7 @@ export function BasicExample() {
       }
     });
   }, [categories]);
-  console.log(categories);
+  
 
   if (!categories) return null;
   return (
