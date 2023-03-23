@@ -13,7 +13,7 @@ export function BlogListTest() {
 
   function loadArticles(page, query = "") {
     axios
-      .get(`http://localhost:3001/articlesNew?q=${query}&page=${page}`)
+      .get(`${process.env.REACT_APP_API_URL}/articlesNew?q=${query}&page=${page}`)
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {

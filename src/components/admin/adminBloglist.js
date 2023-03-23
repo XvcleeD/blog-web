@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import Chip from "../../common/Chip/index";
 
+
 export function AdminBlogList() {
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/articles`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/articles`).then((res) => {
       const { data, status } = res;
       if (status === 200) {
         setArticle(data);

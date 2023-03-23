@@ -5,6 +5,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import axios from "axios";
 import { useState } from "react";
 
+
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +13,7 @@ export function Login() {
   function handleLogin() {
     axios
       .get(
-        `http://localhost:3001/login?username=${username}&password=${password}`
+        `${process.env.REACT_APP_API_URL}/login?username=${username}&password=${password}`
       )
       .then((res) => {
         const { data, status } = res;

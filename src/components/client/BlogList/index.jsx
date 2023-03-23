@@ -11,8 +11,9 @@ export function BlogList() {
   // const [searchParams] = useSearchParams();
   // console.log(categoryId);
   function loadArticles() {
-    axios.get(`http://localhost:3001/articles`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/articles`).then((res) => {
       const { data, status } = res;
+      // console.log(res);
       if (status === 200) {
         setArticle(data);
       } else {
@@ -20,7 +21,7 @@ export function BlogList() {
       }
     });
   }
-
+  // console.log(article);
   useEffect(() => {
     loadArticles();
   }, []);
@@ -35,16 +36,13 @@ export function BlogList() {
   //     }
   //   });
   // }, []);
-  if (!article) return null;
   console.log(article);
+  if (!article.list) return null;
   return (
     <div className="blogList-wrap container mt-5">
-      {article.map(
-        (blog) => (
-          <h3>{blog.list[0].title}</h3>
-        )
-        // <BlogItem blog={blog} />
-      )}
+      {article.list?.map((blog) => (
+        <BlogItem blog={blog} />
+      ))}
     </div>
   );
 }

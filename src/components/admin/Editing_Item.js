@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import { useState } from "react";
 // import { toast } from "react-toastify";
 import axios from "axios";
+
+
 export function EditingItem({
   cat1,
   index,
@@ -25,7 +27,7 @@ export function EditingItem({
       setError("sdgdsags");
     } else {
       const updatedItem = { ...cat1, name: editingTexts[cat1._id] };
-      axios.put(`http://localhost:3001/categories/${_id}`, updatedItem);
+      axios.put(`${process.env.REACT_APP_API_URL}/categories/${_id}`, updatedItem);
       loadCategories();
       cancalEditing(_id);
       // toast.success("Амжилттай хадгаллаа", {

@@ -16,21 +16,20 @@ export function ArticlesNew() {
     formData.append("image", imageFile);
     // console.log(formDate)
 
-    await fetch("http://localhost:3001/upload-image", {
+    await fetch(`${process.env.REACT_APP_API_URL}/upload-image`, {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
-        setImage(data.file);
+        setImage(data);
       });
   }
-
-  // console.log(image);
+  
 
   function submit() {
     axios
-      .post("http://localhost:3001/articles", {
+      .post(`${process.env.REACT_APP_API_URL}/articles`, {
         title,
         categoryId,
         content,
@@ -75,7 +74,6 @@ export function ArticlesNew() {
           }}
         />
         <button onClick={submit}>Хадгалах</button>
-        {/* <div dangerouslySetInnerHTML={{ __html: text }}></div> */}
       </div>
     </>
   );

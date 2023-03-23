@@ -9,7 +9,7 @@ export function BasicExample() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/categories?q=`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/categories?q=`).then((res) => {
       const { data, status } = res;
       if (status === 200) {
         setCategories(data);
@@ -21,10 +21,9 @@ export function BasicExample() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {console.log(categories)}
             {categories?.map((cat) => (
               <Nav.Link key={cat._id} as={Link} to="">
                 {cat.name}

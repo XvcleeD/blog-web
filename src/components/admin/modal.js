@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 
 
+
 export function NewModal({ show, handleClose, onComplete }) {
   const [error, setError] = useState("");
   const [name, setName] = useState("");
@@ -18,7 +19,7 @@ export function NewModal({ show, handleClose, onComplete }) {
     } else {
       setLoading(true);
       axios
-        .post("http://localhost:3001/categories", {
+        .post(`${process.env.REACT_APP_API_URL}/categories`, {
           name: name,
         })
         .then((res) => {
