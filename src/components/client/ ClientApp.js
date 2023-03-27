@@ -7,6 +7,7 @@ import { BlogNav } from "./blog_navbar";
 import { BlogListTest } from "./BlogList/index-test";
 import { BlogList } from "./BlogList/index";
 import { BasicExample } from "./categoryNavList";
+import { Register } from "../admin/Register";
 
 export function ClientApp() {
   return (
@@ -16,6 +17,7 @@ export function ClientApp() {
       <Routes>
         <Route path="/" element={<BlogPageHome />} />
         <Route path="/blog" element={<BlogList />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/blog/test" element={<BlogListTest />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route path="*" element={<NotFound />} />

@@ -1,34 +1,34 @@
 import { Button, Card } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import axios from "axios";
 import { useState } from "react";
 
-
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  console.log(username, password);
+ 
   function handleLogin() {
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/login?username=${username}&password=${password}`
-      )
+      .post(`${process.env.REACT_APP_API_URL}/users/login`, {
+        username,
+        password,
+      })
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {
-          const { token } = data;
-          localStorage.setItem("loginToken", token);
-          window.location.reload();
+          // const { token } = data;
+          // localStorage.setItem("loginToken", token);
+          // window.location.reload();
         }
       })
       .catch(({ response, code }) => {
-        if (response.status === 401) {
-          alert("Нууц үг эсвэл нэр буруу байна");
-        } else {
-          alert(code);
-        }
+        // if (response.status === 401) {
+        //   alert("Нууц үг эсвэл нэр буруу байна");
+        // } else {
+        //   alert(code);
+        // }
       });
   }
   return (

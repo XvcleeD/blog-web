@@ -11,6 +11,7 @@ import { Container } from "react-bootstrap";
 // import { SingUp } from "./components/admin/sing_up";
 // import { Login } from "./components/admin/log_in";
 
+
 export function App() {
   return (
     <>
@@ -30,6 +31,7 @@ export function App() {
           {/* <Route path="/singUp" element={<SingUp />} /> */}
           {/* <Route path="/Login" element={<Login />} /> */}
           <Route path="*" element={<ClientApp />} />
+          
         </Routes>
         <ToastContainer position="top-right" />
       </BrowserRouter>

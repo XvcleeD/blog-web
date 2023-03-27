@@ -21,9 +21,9 @@ export function Body() {
   const [searchParams, setSearchParams] = useSearchParams({});
 
   function loadCategories() {
-    const token = localStorage.getItem("loginToken");
+    // const token = localStorage.getItem("loginToken");
     axios
-      .get(`${process.env.REACT_APP_API_URL}/categories?q=${query}&token=${token}`)
+      .get(`${process.env.REACT_APP_API_URL}/categories?q=${query}`)
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {
@@ -55,9 +55,9 @@ export function Body() {
   function closeModal() {
     setSearchParams({});
   }
-  if (!localStorage.getItem("loginToken")) {
-    return <Login />;
-  }
+  // if (!localStorage.getItem("loginToken")) {
+  //   return <Login />;
+  // }
 
   const editing = searchParams.get("editing");
 

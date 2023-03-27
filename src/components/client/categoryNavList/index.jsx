@@ -17,15 +17,15 @@ export function BasicExample() {
         alert(`Aldaa garlaa: ${status}`);
       }
     });
-  }, [categories]);
-  
+  }, []);
+
+  console.log(categories);
 
   if (!categories) return null;
   return (
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {categories?.map((cat) => (
               <Nav.Link key={cat._id} as={Link} to="">
@@ -33,7 +33,7 @@ export function BasicExample() {
               </Nav.Link>
             ))}
           </Nav>
-        </Navbar.Collapse>
+        
       </Container>
     </Navbar>
   );
