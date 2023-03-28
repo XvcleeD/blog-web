@@ -13,6 +13,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { AdminBlogList } from "./adminBloglist";
 import { Login } from "./log_in";
+import { UserContext } from "../../App";
+
 
 export function Body() {
   const [todos, setModalEl] = useState([]);
@@ -55,14 +57,16 @@ export function Body() {
   function closeModal() {
     setSearchParams({});
   }
-  // if (!localStorage.getItem("loginToken")) {
-  //   return <Login />;
-  // }
+  // const displayName = useContext(UserContext);
+  if (!localStorage.getItem("loginToken")) {
+    return <Login />;
+  }
 
   const editing = searchParams.get("editing");
 
   return (
     <>
+    {/* {displayName.greeting} {displayName.name} */}
       <Routes>
         <Route path="/articles/list" element={<AdminBlogList />} />
         <Route path="/articles" element={<Articles />} />
