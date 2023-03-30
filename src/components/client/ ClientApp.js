@@ -28,7 +28,6 @@ export function ClientApp() {
 function SingleBlog() {
   const { id } = useParams();
   const [article, setArticle] = useState();
-  // const [category, setCategory] = useState();
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/articles/${id}`).then((res) => {

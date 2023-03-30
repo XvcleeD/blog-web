@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import parse from "html-react-parser";
 import "./style.css";
 import Chip from "../../../../common/Chip/index";
 
@@ -11,10 +10,7 @@ const BlogItem = ({ blog: { image, title, categoryId, _id } }) => (
     <Chip label={categoryId.name} />
     <h3>{title}</h3>
     <footer>
-      {/* <div className="blogItem-author"><div>{parse(content)}</div></div> */}
-      <Link className="blogItem-link" to={`/blog/${_id}`}>
-        →
-      </Link>
+      <Link className="blogItem-link" to={`/blog/${_id}`}>→</Link>
     </footer>
   </div>
 );

@@ -19,8 +19,6 @@ export function BasicExample() {
     });
   }, []);
 
-  console.log(categories);
-
   if (!categories) return null;
   return (
     <Navbar bg="light" expand="lg">
