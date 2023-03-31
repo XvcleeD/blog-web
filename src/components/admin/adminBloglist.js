@@ -22,16 +22,16 @@ export function AdminBlogList() {
   // console.log(article);
   return (
     <div className="blogList-wrap container mt-5">
-      {article?.map((blog) => (
-        <div key={blog.id} className="blogItem-wrap">
-          <img src={blog.backgaround} alt="cover" className="blogItem-cover" />
-          <Chip label={blog.category.name} />
+      {article.list?.map((blog) => (
+        <div key={blog._id} className="blogItem-wrap">
+          <img src={blog.image.path} alt="cover" className="blogItem-cover" />
+          <Chip label={blog.categoryId.name} />
           <h3>{blog.title}</h3>
           <footer>
             <div className="blogItem-author">
               {/* <di>{parse(text)}</di  v> */}
             </div>
-            <Link className="blogItem-link" to={`/blog/${blog.id}`}>
+            <Link className="blogItem-link" to={`/blog/${blog._id}`}>
               →
             </Link>
           </footer>
